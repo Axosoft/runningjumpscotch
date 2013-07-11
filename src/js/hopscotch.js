@@ -652,7 +652,7 @@
       }
 
       // SET (OR RESET) ARROW OFFSETS
-      if (step.arrowOffset !== 'center') {
+      if (step.arrowOffset !== 'center' && step.arrowOffset !== 'right') {
         arrowOffset = utils.getPixelValue(step.arrowOffset);
       }
       else {
@@ -666,6 +666,9 @@
         arrowEl.style.top = '';
         if (arrowOffset === 'center') {
           arrowEl.style[arrowPos] = Math.floor((bubbleBoundingWidth / 2) - arrowEl.offsetWidth/2) + 'px';
+        }
+        else if (arrowOffset === 'right') {
+          arrowEl.style.left = bubbleWidth + bubblePadding - arrowEl.getBoundingClientRect().width + 'px';
         }
         else {
           // Numeric pixel value
@@ -686,6 +689,9 @@
       // HORIZONTAL OFFSET
       if (step.xOffset === 'center') {
         left = (boundingRect.left + targetEl.offsetWidth/2) - (bubbleBoundingWidth / 2);
+      }
+      else if (step.xOffset === 'right') {
+          left = (boundingRect.left + boundingRect.width/2) - (bubbleWidth) - bubblePadding;
       }
       else {
         left += utils.getPixelValue(step.xOffset);
