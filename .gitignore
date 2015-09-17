@@ -4,3 +4,5 @@ tmp
 *.iml
 _SpecRunner.html
 .grunt
+archives
+dist
